@@ -1,0 +1,418 @@
+/* Start Variables */
+:root {
+  --main-color: #938100;
+  --main-color-2: #575757;
+  --transparent-color: #0c5d72b3;
+  --secondary-color: #6c6c6c;
+  --decoration-color: #333;
+  --paragraph-color: #777;
+  --background-section: #fff;
+  --main-transition: 0.4s;
+  --section-padding: 100px;
+}
+/* End Variables */
+/* Start Global Rules */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Cairo", sans-serif;
+  direction: rtl;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small Screen */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium Screen */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large Screen */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* Start Components */
+.scroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0rem;
+  height: 0.5rem;
+  background-color: var(--main-color);
+  z-index: 999999;
+}
+.main-heading {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--main-color);
+  position: relative;
+  margin: 5rem auto;
+  width: fit-content;
+  border: 0.2rem solid var(--main-color);
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  z-index: 1;
+}
+.main-heading::before,
+.main-heading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--main-color);
+  border-radius: 0.5rem;
+  transition: var(--main-transition);
+  z-index: -1;
+}
+.main-heading::before {
+  right: -3rem;
+}
+.main-heading::after {
+  left: -3rem;
+}
+.main-heading:hover {
+  color: #fff;
+  border-color: var(--main-color-2);
+  transition-duration: 1s;
+}
+.main-heading:hover::before {
+  animation: fill-left 1s linear forwards;
+}
+.main-heading:hover::after {
+  animation: fill-right 1s linear forwards;
+}
+@keyframes fill-left {
+  0% {
+    right: -2rem;
+  }
+  50% {
+    right: -1rem;
+    width: 50%;
+  }
+  100% {
+    right: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 1.5rem;
+    background-color: var(--main-color-2);
+  }
+}
+@keyframes fill-right {
+  0% {
+    left: -2rem;
+  }
+  50% {
+    left: -1rem;
+    width: 50%;
+  }
+  100% {
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 1.5rem;
+    background-color: var(--main-color-2);
+  }
+}
+/* End Components */
+/* End Global Rules */
+/* Start Header */
+.header {
+  min-height: 7.2rem;
+  position: relative;
+  box-shadow: 0 0 1rem #ddd;
+  z-index: 2;
+  background-color: var(--background-section);
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 767px) {
+  .header .container {
+    align-items: center;
+  }
+}
+.header .logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+.header .logo img {
+  width: 6rem;
+  max-width: 100%;
+}
+.header .logo a {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: 900;
+  order: -1;
+  color: var(--main-color-2);
+}
+.header .links {
+  display: flex;
+  transition: var(--main-transition);
+}
+@media (max-width: 767px) {
+  .header .links {
+    display: none;
+  }
+  .header .links.active {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 8rem;
+    flex-direction: column;
+    text-align: center;
+    z-index: 999;
+  }
+}
+.header .links li {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.header .links li::before {
+  content: "";
+  position: absolute;
+  right: -100%;
+  bottom: 0;
+  width: 100%;
+  height: 0.4rem;
+  background-color: var(--main-color-2);
+  transition: var(--main-transition);
+}
+.header .links li:hover {
+  background-color: #f5f6f6;
+}
+.header .links li:hover::before {
+  right: 0%;
+}
+@media (max-width: 767px) {
+  .header .links li {
+    width: 100%;
+    border-bottom: 0.1rem solid #ddd;
+    transition: var(--main-transition);
+    background-color: var(--background-section);
+  }
+}
+.header .links li a {
+  font-size: 1.8rem;
+  color: var(--main-color-2);
+  font-weight: 700;
+  transition: var(--main-transition);
+}
+.header .links li:hover a {
+  color: var(--main-color-2);
+}
+@media (max-width: 767px) {
+  .header .links li {
+    padding: 0;
+  }
+  .header .links li a {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.8rem;
+    color: var(--main-color);
+    display: block;
+  }
+}
+.header .container > i {
+  display: none;
+  padding: 0.5rem;
+  font-size: 2.8rem;
+  color: var(--main-color-2);
+  border: 0.2rem solid var(--main-color-2);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+@media (max-width: 767px) {
+  .header .container > i {
+    display: block;
+  }
+  .header .container > i.active {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    color: var(--background-section);
+  }
+}
+/* End Header */
+/* Start Landing */
+.landing {
+  position: relative;
+  background-color: var(--background-section);
+}
+.landing .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+@media (max-width: 767px) {
+  .landing .container {
+    gap: 0;
+  }
+}
+.landing .image {
+  margin: 10rem 0;
+  order: 1;
+  width: 45rem;
+  padding: 2rem;
+  border-radius: 50%;
+  flex-basis: 45%;
+  animation: up-down 3s linear infinite;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .landing .image {
+    flex-basis: 100%;
+    margin: 5rem 0 0;
+    order: 0;
+  }
+}
+.landing .image img {
+  max-width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 2rem var(--decoration-color);
+}
+.landing .text {
+  flex-basis: 45%;
+  line-height: 2;
+}
+@media (max-width: 767px) {
+  .landing .text {
+    flex-basis: 100%;
+    margin: 5rem 0;
+    text-align: center;
+  }
+}
+.landing .text h2 {
+  font-size: 2.5rem;
+  color: var(--main-color-2);
+}
+.landing .text h2 span {
+  color: var(--main-color);
+  font-weight: 900;
+  /* text-shadow: 0 0 0.2rem var(--background-section); */
+}
+.landing .text p {
+  font-size: 2rem;
+  color: #555;
+}
+.landing .text p span {
+  color: var(--main-color);
+  font-weight: 900;
+  font-size: 2.5rem;
+  /* text-shadow: 0 0 0.2rem var(--background-section); */
+}
+.landing .text button {
+  margin: 4rem 0;
+  border: none;
+  background-color: var(--background-section);
+}
+.landing .text button:hover a {
+  background-color: var(--main-color-2);
+  color: var(--background-section);
+}
+.landing .text button a {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--main-color-2);
+  background-color: var(--background-section);
+  padding: 1.5rem 2.5rem;
+  display: block;
+  border-radius: 2rem;
+  border: 0.2rem solid var(--main-color-2);
+  transition: var(--main-transition);
+}
+@keyframes up-down {
+  0%,
+  100% {
+    top: -1.5rem;
+  }
+  50% {
+    top: 0rem;
+  }
+}
+/* End Landing */
+/* Start About */
+.about {
+  padding: 10rem 0;
+  position: relative;
+  background-image: url(../files/landing_cover.jpg);
+  background-size: cover;
+  animation: change 15s linear infinite;
+}
+.about::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0 0 0 / 0.8);
+}
+@media (max-width: 767px) {
+  .about {
+    padding: 5rem 0;
+  }
+}
+.about .container p {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  line-height: 2;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+.about .container p span {
+  color: var(--main-color);
+  text-decoration: underline;
+}
+@keyframes change {
+  0%,
+  100% {
+    background-image: url(../files/landing_cover.jpg);
+  }
+  50% {
+    background-image: url(../files/landing_cover_2.jpg);
+  }
+}
+/* End About */
