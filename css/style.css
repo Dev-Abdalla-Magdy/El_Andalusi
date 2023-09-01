@@ -403,6 +403,7 @@ a {
 .landing .text h2 span {
   color: var(--main-color);
   font-weight: 900;
+  text-shadow: 0rem 0rem 1rem;
 }
 
 .landing .text p {
@@ -414,7 +415,7 @@ a {
   color: var(--main-color);
   font-weight: 900;
   font-size: 2.5rem;
-  /* text-shadow: 0 0 0.2rem var(--background-section); */
+  text-shadow: 0rem 0rem 1rem;
 }
 
 .landing .text button {
@@ -455,7 +456,7 @@ a {
 /* End Landing */
 /* Start About */
 .about {
-  padding: 10rem 0;
+  padding: 15rem 0;
   position: relative;
   background-image: url(../files/landing_cover_1.jpg);
   background-size: cover;
@@ -481,10 +482,16 @@ a {
   position: relative;
   z-index: 1;
   text-align: center;
-  line-height: 2;
+  line-height: 3;
   font-size: 2.2rem;
   font-weight: 600;
   color: #fff;
+}
+
+@media (max-width: 991px) {
+  .about .container p {
+    line-height: 2;
+  }
 }
 
 .about .container p span {
@@ -677,8 +684,7 @@ a {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(87, 87, 87, 0.75);
-  z-index: 0;
+  background-color: rgba(0 0 0 / 0.75);
 }
 
 @media (max-width: 991px) {
@@ -691,6 +697,7 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 10rem 4rem;
+  margin-top: 15rem;
 }
 
 .testi .box {
@@ -701,6 +708,10 @@ a {
   box-shadow: 0 0 1rem 0.5rem rgba(50, 50, 50, 0.25);
   padding: 2rem;
   transition: var(--main-transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .testi .box:hover {
@@ -709,24 +720,13 @@ a {
   transform: translateY(-1rem);
 }
 
-.testi .box .quote {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0 2rem;
-}
-
-.testi .box .quote i {
-  font-size: 2rem;
-  color: var(--main-color);
-}
-
 .testi .box .image {
   width: 10rem;
   height: 10rem;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: -25%;
+  top: -40%;
   padding: 0.75rem;
   border-radius: 50%;
   box-shadow: 0rem 0rem 1rem 1rem #999;
@@ -748,11 +748,12 @@ a {
   font-size: 1.6rem;
   font-weight: 900;
   color: #6f6f6f;
+  margin-top: 2.5rem;
 }
 
 .testi .box p {
   line-height: 2;
-  margin: 2rem 0;
+  margin: 1rem 0;
   color: #777;
   font-size: 1.4rem;
 }
@@ -1072,6 +1073,12 @@ a {
   transition: var(--main-transition);
 }
 
+@media (min-width: 992px) {
+  .footer .links a:hover {
+    transform: translateX(-1rem);
+  }
+}
+
 @media (max-width: 991px) {
   .footer .links a {
     width: 100%;
@@ -1089,14 +1096,6 @@ a {
   font-size: 1.4rem;
   margin-top: 5rem;
   margin-bottom: 2.5rem;
-}
-
-.footer .end span,
-.footer .developer {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--main-color);
-  text-shadow: 0rem 0rem .5rem;
 }
 
 .footer .developer {
